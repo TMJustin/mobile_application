@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +29,9 @@ public class VacationList extends AppCompatActivity {
 
     private Repository repository;
     private SearchView searchView;
+
+    // Made the adapter a member variable so you can access it anywhere in this class
+    private VacationAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +55,10 @@ public class VacationList extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         repository = new Repository(getApplication());
-        List<Vacation> allVacations = repository.getmAllVacations();
-        final VacationAdapter vacationAdapter = new VacationAdapter(this);
-        recyclerView.setAdapter(vacationAdapter);
+        adapter = new VacationAdapter(this);
+        recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        vacationAdapter.setVacations(allVacations);
+        // Don't need to set the adapter data here since you're doing it in onResume
 
         searchView = findViewById(R.id.menu_search);
         searchView.clearFocus();
@@ -67,7 +70,8 @@ public class VacationList extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                filteredList(newText);
+                List<Vacation> searchResults = repository.searchVacationList(newText);
+                adapter.setVacations(searchResults);
                 return false;
             }
         });
@@ -86,15 +90,11 @@ public class VacationList extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-
         super.onResume();
         List<Vacation> allVacations = repository.getmAllVacations();
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final VacationAdapter vacationAdapter = new VacationAdapter(this);
-        recyclerView.setAdapter(vacationAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        vacationAdapter.setVacations(allVacations);
-
+        adapter.setVacations(allVacations);
+        // you were setting a second instance of VacationAdapter on the RecyclerView here. It only needs to be set
+        // once in onCreate.
     }
 
     @Override
@@ -115,6 +115,9 @@ public class VacationList extends AppCompatActivity {
             repository.insert(excursion);
             excursion = new Excursion(0, "River Tour", "6/10/2025", 1);
             repository.insert(excursion);
+
+            adapter.setVacations(repository.getmAllVacations());
+            Toast.makeText(this, "Sample data added", Toast.LENGTH_SHORT).show();
             return true;
         }
 

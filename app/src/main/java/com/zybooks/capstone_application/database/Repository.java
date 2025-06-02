@@ -1,6 +1,9 @@
 package com.zybooks.capstone_application.database;
 
 import android.app.Application;
+import android.os.Looper;
+
+import androidx.lifecycle.LiveData;
 
 import com.zybooks.capstone_application.dao.ExcursionDAO;
 import com.zybooks.capstone_application.dao.VacationDAO;
@@ -10,6 +13,7 @@ import com.zybooks.capstone_application.entities.Vacation;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.function.Consumer;
 
 public class Repository {
     private ExcursionDAO mExcursionDAO;
@@ -28,21 +32,15 @@ public class Repository {
     }
 
 
-//    public List<Vacation> searchVacationList(String searchQuery) {
-//        return mVacationDAO.searchVacationList();
-//    }
+    public List<Vacation> searchVacationList(String searchQuery) {
+        // add wildcards so that the LIKE query works properly
+        return mVacationDAO.searchVacationList('%' + searchQuery + '%');
+    }
 
     public List<Vacation> getmAllVacations() {
-        databaseExecutor.execute(() -> {
-            mAllVacations = mVacationDAO.getAllVacations();
-        });
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        return mAllVacations;
+        // You can remove the executor and just return the DAO call like this. Repeat for all methods in this class.
+        // This is only possible since we set .allowMainThreadQueries() in the DB builder
+        return mVacationDAO.getAllVacations();
     }
 
     public void insert (Vacation vacation) {

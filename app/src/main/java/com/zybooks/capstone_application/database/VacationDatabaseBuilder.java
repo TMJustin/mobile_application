@@ -25,6 +25,9 @@ public abstract class VacationDatabaseBuilder extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(), VacationDatabaseBuilder.class,
                                     "MyVacationDatabase.db")
+                            // Allows DB queries on the main thread, so you don't need an executor. You'd never do this
+                            // in a real app, but I'm guessing it should be ok for this. I did it in my WGU project
+                            .allowMainThreadQueries()
                             .fallbackToDestructiveMigration().
                             build();
                 }

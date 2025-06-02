@@ -2,6 +2,7 @@ package com.zybooks.capstone_application.UI;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +18,9 @@ import java.util.List;
 
 public class VacationAdapter extends RecyclerView.Adapter<VacationAdapter.VacationViewHolder> {
 
-    private static List<Vacation> mVacations;
+    private List<Vacation> mVacations;
     private final Context context;
     private final LayoutInflater mInflator;
-
 
 
     public VacationAdapter(Context context) {

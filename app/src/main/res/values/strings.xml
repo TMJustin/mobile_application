@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Travel Planner</string>
+    <string name="title">Travel Planner</string>
+    <string name="enter_button">Enter</string>
+    <string name="excursiontitle">Add Excursions</string>
+    <string name="destinationlisttitle">"List of Destinations"</string>
+    <string name="destinationdetails">"Destination Details"</string>
+    <string name="welcometitle">"Travel Planning Home"</string>
+</resources>

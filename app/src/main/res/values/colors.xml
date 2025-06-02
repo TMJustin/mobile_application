@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="purple_200">#8050D1</color>
+    <color name="bg_light_blue">#9D9EF7FF</color>
+    <color name="floating_button">#FC5B7BC1</color>
+    <color name="recycler_bg">#93A7B4</color>
+    <color name="date_button">#A9AF92FF</color>
+</resources>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/searchreport_layout"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+    android:padding="6dp">
+
+
+    <TextView
+        android:id="@+id/searchheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/searchtitle"
+        android:textStyle="italic"
+        android:textSize="20dp"
+        />
+
+    <TextView
+        android:id="@+id/searchreport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="vacationtitle()"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/searchheading"
+        android:layout_alignEnd="@id/searchheading"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/destinationlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Destination:"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_below="@id/searchheading"
+        android:layout_alignStart="@id/searchheading"
+        android:labelFor="@id/searchreport"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/searchreport2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="accommodation()"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/searchreport"
+        android:layout_alignEnd="@id/searchreport"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/destinationlabel2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accommodation:"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_below="@id/destinationlabel"
+        android:layout_alignStart="@id/searchheading"
+        android:labelFor="@id/searchreport2"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/searchreport3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="startdate()"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/searchreport2"
+        android:layout_alignEnd="@id/searchheading"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/destinationlabel3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Date:"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_below="@id/destinationlabel2"
+        android:layout_alignStart="@id/searchheading"
+        android:labelFor="@id/searchreport3"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/searchreport4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="enddate()"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/searchreport3"
+        android:layout_alignLeft="@id/searchreport2"
+        android:layout_alignEnd="@id/searchheading"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/destinationlabel4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="End Date:"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_below="@id/destinationlabel3"
+        android:layout_alignStart="@id/searchheading"
+        android:labelFor="@id/searchreport4"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/searchreport5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/searchreport4"
+        android:layout_alignEnd="@id/searchheading"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/destinationlabel5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="# of Associated Excursions:"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_below="@id/destinationlabel4"
+        android:layout_alignStart="@id/searchheading"
+        android:labelFor="@id/searchreport5"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/linebreak"
+        android:layout_below="@id/searchreport5"
+        android:textSize="30dp"
+        android:layout_marginBottom="5dp"
+        android:layout_alignStart="@id/searchheading"
+        />
+
+</RelativeLayout>

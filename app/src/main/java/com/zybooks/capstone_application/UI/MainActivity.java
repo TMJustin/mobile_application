@@ -13,10 +13,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.zybooks.capstone_application.R;
+import com.zybooks.capstone_application.database.Repository;
 
 public class MainActivity extends AppCompatActivity {
 
     public static int numAlert;
+    private Repository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, VacationList.class);
                 intent.putExtra("test", "Information sent");
-                startActivity(intent);
             }
         });
     }

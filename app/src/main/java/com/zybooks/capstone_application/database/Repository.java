@@ -1,6 +1,9 @@
 package com.zybooks.capstone_application.database;
 
 import android.app.Application;
+import android.os.Looper;
+
+import androidx.lifecycle.LiveData;
 
 import com.zybooks.capstone_application.dao.ExcursionDAO;
 import com.zybooks.capstone_application.dao.VacationDAO;
@@ -10,6 +13,7 @@ import com.zybooks.capstone_application.entities.Vacation;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.function.Consumer;
 
 public class Repository {
     private ExcursionDAO mExcursionDAO;
@@ -28,9 +32,9 @@ public class Repository {
     }
 
 
-//    public List<Vacation> searchVacationList(String searchQuery) {
-//        return mVacationDAO.searchVacationList();
-//    }
+    public List<Vacation> searchVacationList(String searchQuery) {
+        return mVacationDAO.searchVacationList('%' + searchQuery + '%');
+    }
 
     public List<Vacation> getmAllVacations() {
         databaseExecutor.execute(() -> {
@@ -100,6 +104,10 @@ public class Repository {
             throw new RuntimeException(e);
         }
         return mAllExcursions;
+    }
+
+    public int getNumAssociatedExcursions(int vacationID) {
+        return mVacationDAO.getNumAssociatedExcursions(vacationID);
     }
 
     public void insert(Excursion excursion) {

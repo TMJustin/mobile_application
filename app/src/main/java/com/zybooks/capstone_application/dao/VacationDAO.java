@@ -1,5 +1,6 @@
 package com.zybooks.capstone_application.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -23,9 +24,15 @@ public interface VacationDAO {
     @Delete
     void delete(Vacation vacation);
 
-//    @Query("SELECT * FROM VACATIONS WHERE vacationTitle LIKE searchQuery")
-//    List<Vacation> searchVacationList(searchQuery);
+    @Query("SELECT * FROM VACATIONS WHERE vacationTitle LIKE :searchQuery " +
+            "OR accommodation LIKE :searchQuery " +
+            "OR startDate LIKE :searchQuery " +
+            "OR endDate LIKE :searchQuery")
+    List<Vacation> searchVacationList(String searchQuery);
 
     @Query("SELECT * FROM VACATIONS ORDER BY vacationID ASC")
     List<Vacation> getAllVacations();
+
+    @Query("SELECT COUNT(*) FROM EXCURSIONS WHERE vacationID = :vacationID")
+    int getNumAssociatedExcursions(int vacationID);
 }

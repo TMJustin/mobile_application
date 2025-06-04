@@ -6,4 +6,6 @@
     <string name="destinationlisttitle">"List of Destinations"</string>
     <string name="destinationdetails">"Destination Details"</string>
     <string name="welcometitle">"Travel Planning Home"</string>
+    <string name="searchtitle"><u><strong>"Destination Search Details::</strong></u></string>
+    <string name="linebreak"><strong>-----------------------------</strong></string>
 </resources>
